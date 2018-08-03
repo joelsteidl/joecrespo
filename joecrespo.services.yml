@@ -1,0 +1,4 @@
+services:
+  joecrespo.embellish:
+    class: Drupal\joecrespo\EmbellishService
+    arguments: []

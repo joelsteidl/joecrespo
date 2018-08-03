@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Contains joecrespo.module.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ */
+function joecrespo_node_presave(EntityInterface $entity) {
+  // Embellish the node title.
+  $service = Drupal::service('joecrespo.embellish');
+  $entity->set('title', $service->apply());
+}

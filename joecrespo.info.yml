@@ -1,0 +1,5 @@
+name: 'joecrespo'
+type: module
+description: 'Tools to elevate Joe Crespo.'
+core: 8.x
+package: 'Custom'
