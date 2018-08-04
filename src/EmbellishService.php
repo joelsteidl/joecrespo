@@ -10,18 +10,18 @@ class EmbellishService implements EmbellishServiceInterface {
   /**
    * {@inheritdoc}
    */
-  public function apply() {
+  public function describe($thing) {
     $client = \Drupal::httpClient();
     $params = [
       'query' => [
-        'rel_jjb' => 'sunset',
+        'rel_jjb' => $thing,
       ]
     ];
     $request = $client->get('https://api.datamuse.com/words', $params);
     $response = $request->getBody()->getContents();
     $words = json_decode($response);
     $rand = array_rand($words);
-    return 'Joe Crespo is ' . $words[$rand]->word;
+    return $words[$rand]->word;
   }
 
 }

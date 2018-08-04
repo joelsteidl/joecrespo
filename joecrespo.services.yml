@@ -2,3 +2,6 @@ services:
   joecrespo.embellish:
     class: Drupal\joecrespo\EmbellishService
     arguments: []
+  joecrespo.notifier:
+    class: Drupal\joecrespo\NotifierService
+    arguments: ['@key.repository']

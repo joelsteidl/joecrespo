@@ -12,6 +12,10 @@ use Drupal\Core\Entity\EntityInterface;
  */
 function joecrespo_node_presave(EntityInterface $entity) {
   // Embellish the node title.
-  $service = Drupal::service('joecrespo.embellish');
-  $entity->set('title', $service->apply());
+  $embellish = Drupal::service('joecrespo.embellish');
+  $adjective = $embellish->describe('flower');
+  $entity->set('title', t('Joe Crespo is @adjective', ['@adjective' => $adjective]));
+
+  $notifier = Drupal::service('joecrespo.notifier');
+  $notifier->send(t('Joe, there is a new post that calls you @adjective', ['@adjective' => $adjective]));
 }

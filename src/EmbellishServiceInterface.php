@@ -10,8 +10,11 @@ interface EmbellishServiceInterface {
   /**
    * Grab some embellished text.
    *
+   * @param string $noun
+   *   A noun that can be described.
+   *
    * @return string
    *   A string of embellished text.
    */
-  public function apply();
+  public function describe($noun);
 }
