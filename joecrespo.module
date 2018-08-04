@@ -11,13 +11,15 @@ use Drupal\Core\Entity\EntityInterface;
  * Implements hook_ENTITY_TYPE_insert().
  */
 function joecrespo_node_presave(EntityInterface $entity) {
-  $noun = 'dessert';
+  $thing = '';
+  // Get an adjective to describe our thing.
   $embellish = Drupal::service('joecrespo.embellish');
-  $adjective = $embellish->describe($noun);
+  $adjective = $embellish->describe($thing);
+
   // Hijack and embellish the node title.
   $entity->set('title', t('Joe Crespo is @adjective', ['@adjective' => $adjective]));
 
-  // Send a notification.
+  // Send a notification to Joe.
   $notifier = Drupal::service('joecrespo.notifier');
   $notifier->send(t('Joe, there is a new post that says you are @adjective', ['@adjective' => $adjective]));
 }
